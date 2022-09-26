@@ -1,0 +1,156 @@
+// C++ code
+//
+/*
+	Agustin Lopez 
+    Dni: 41586725
+    Division F
+*/
+int Apagando(int estadoAntes, int estadoAhora);
+
+void setup()
+{
+  pinMode(13, OUTPUT);
+  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(3, INPUT_PULLUP);
+  pinMode(2, INPUT_PULLUP);
+  Serial.begin(9600);
+  randomSeed(analogRead(A0));
+}
+
+ int numero;
+int estadoAntes = 0;
+int segundos;
+int segundosAntes = 0;
+int contador = 0;
+
+void loop()
+{
+     segundos = millis() /900;
+     if(segundos != segundosAntes)
+     {
+        segundosAntes = segundos;
+        contador++;
+     }
+  
+  int estadoAhora = digitalRead(1);
+  
+    if(estadoAhora == 1 && estadoAntes == 0)
+    {
+      numero = random (0,10);
+      Serial.println(numero);
+      switch(contador)
+      {
+        case 1:
+        	digitalWrite(13, 1);
+        break;
+        case 2:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        break;
+        case 3:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        	digitalWrite(11, 1);
+        break;
+        case 4:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        	digitalWrite(11, 1);
+        	digitalWrite(10, 1);
+        break;
+        case 5:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        	digitalWrite(11, 1);
+        	digitalWrite(10, 1);
+        	digitalWrite(9, 1);
+        break;
+        case 6:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        	digitalWrite(11, 1);
+        	digitalWrite(10, 1);
+        	digitalWrite(9, 1);
+        	digitalWrite(8, 1);
+        break;
+        case 7:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        	digitalWrite(11, 1);
+        	digitalWrite(10, 1);
+        	digitalWrite(9, 1);
+        	digitalWrite(8, 1);
+        	digitalWrite(7, 1);
+        break;
+        case 8:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        	digitalWrite(11, 1);
+        	digitalWrite(10, 1);
+        	digitalWrite(9, 1);
+        	digitalWrite(8, 1);
+        	digitalWrite(7, 1);
+        	digitalWrite(6, 1);
+        break;
+        case 9:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        	digitalWrite(11, 1);
+        	digitalWrite(10, 1);
+        	digitalWrite(9, 1);
+        	digitalWrite(8, 1);
+        	digitalWrite(7, 1);
+        	digitalWrite(6, 1);
+        	digitalWrite(5, 1);
+        	
+        	
+        break;
+        case 10:
+        	digitalWrite(13, 1);
+        	digitalWrite(12, 1);
+        	digitalWrite(11, 1);
+        	digitalWrite(10, 1);
+        	digitalWrite(9, 1);
+        	digitalWrite(8, 1);
+        	digitalWrite(7, 1);
+        	digitalWrite(6, 1);
+        	digitalWrite(5, 1);
+        	digitalWrite(4, 1);
+        break; 
+      }
+      	
+      	digitalWrite(13, 0);
+    	digitalWrite(12, 0);
+  	digitalWrite(11, 0);
+   	digitalWrite(10, 0);
+  	digitalWrite(9, 0);
+      	digitalWrite(8, 0);
+  	digitalWrite(6, 0);
+      	digitalWrite(4, 0);
+   		
+  		
+    }
+  
+  estadoAntes = estadoAhora;
+  
+}
+
+
+int Apagando(int estadoAntes, int estadoAhora)
+{
+  	digitalWrite(13, 0);
+    	digitalWrite(12, 0);
+  	digitalWrite(11, 0);
+   	digitalWrite(10, 0);
+  	digitalWrite(9, 0);
+      	digitalWrite(8, 0);
+  	digitalWrite(6, 0);
+}
