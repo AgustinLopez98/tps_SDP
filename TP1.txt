@@ -2,8 +2,8 @@
 //
 /*
 	Agustin Lopez 
-    Dni: 41586725
-    Division F
+   	 Dni: 41586725
+    	Division F
 */
 int Apagando(int estadoAntes, int estadoAhora);
 
@@ -21,6 +21,7 @@ void setup()
   pinMode(4, OUTPUT);
   pinMode(3, INPUT_PULLUP);
   pinMode(2, INPUT_PULLUP);
+  pinMode (PULSADOR, INPUT_PULLUP);
   Serial.begin(9600);
   randomSeed(analogRead(A0));
 }
