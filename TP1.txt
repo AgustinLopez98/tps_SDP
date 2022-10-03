@@ -9,7 +9,7 @@
 #define PULSADOR 8
 int pulsadorAnterior = HIGH;
 
-#define CANT_LEDS 9
+#define CANT_LEDS 10
 int leds[] = {13, 12, 11, 10, 9, 8, 7, 6, 5, 4};
 int estados[] = {0, 0, 0, 0, 0, 0, 1, 0, 1, 0};
 
@@ -31,13 +31,16 @@ void setup()
   pinMode(3, INPUT_PULLUP);
   pinMode(2, INPUT_PULLUP);
   pinMode (PULSADOR, INPUT_PULLUP);
+  
   Serial.begin(9600);
+  pinMode (PULSADOR, INPUT_PULLUP);
   for (int i = 0; i < CANT_LEDS; i++)
   {
   	pinMode(leds[i], OUTPUT);
+   }
+  
+  randomSeed(analogRead(0));
   }
-  randomSeed(analogRead(A0));
-}
 
 int numero;
 int estadoAntes = 0;
@@ -47,14 +50,6 @@ int contador = 0;
 
 void loop()
 {
-int led;  
-  int pulsador = digitalRead(PULSADOR);
-  if (pulsador == LOW && pulsador != pulsadorAnterior) {
-    led = random(5);
-    estados[led] = !estados[led];
-    digitalWrite (leds[led], estados[led]);
-  }
-  pulsadorAnterior = pulsador;
      segundos = millis() /1000;
      if(segundos != segundosAntes)
      {
@@ -160,8 +155,20 @@ int led;
    		
   		
     }
+    
+  int led;  
+  int pulsador = digitalRead(PULSADOR);
+  if (pulsador == LOW && pulsador != pulsadorAnterior) 
+  {
+    led = random(5);
+    estados[led] = !estados[led];
+    digitalWrite (leds[led], estados[led]);
+  }
   
   estadoAntes = estadoAhora;
+  
+  pulsadorAnterior = pulsador;
+  Serial.println(pulsador);
   
 }
 
