@@ -156,6 +156,9 @@ void loop()
   		
     }
     
+   estadoAntes = estadoAhora;
+    
+    
   int led;  
   int pulsador = digitalRead(PULSADOR);
   if (pulsador == LOW && pulsador != pulsadorAnterior) 
@@ -165,7 +168,7 @@ void loop()
     digitalWrite (leds[led], estados[led]);
   }
   
-  estadoAntes = estadoAhora;
+  
   
   pulsadorAnterior = pulsador;
   Serial.println(pulsador);
